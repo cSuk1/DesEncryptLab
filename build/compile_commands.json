@@ -1,0 +1,7 @@
+[
+{
+  "directory": "D:/Code/C/Des/DesEncryptLab/build",
+  "command": "D:\\IDE\\JetBrainApp\\apps\\CLion\\ch-0\\223.8836.42\\bin\\mingw\\bin\\gcc.exe   -g -std=gnu11 -o CMakeFiles\\DesEncrypt.dir\\crypt.c.obj -c D:\\Code\\C\\Des\\DesEncryptLab\\crypt.c",
+  "file": "D:/Code/C/Des/DesEncryptLab/crypt.c"
+}
+]
