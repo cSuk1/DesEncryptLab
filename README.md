@@ -14,7 +14,7 @@ DesEncrypt -p a_plain_text -k a_key -v a_initvec -m 1 -c a_cipher_text
 DesEncrypt -p a_decrypt_text -k a_key -v a_initvec -m 5 -c a_cipher_text
 ```
 
-# 一、实践内容
+# 一、前言
 
 ## DES 算法的原理
 
@@ -22,7 +22,7 @@ DesEncrypt -p a_decrypt_text -k a_key -v a_initvec -m 5 -c a_cipher_text
 
 子密钥计算接受初始密钥或者上一轮的密钥作为输入，如果是初始密钥则进行 PC1 置换，然后将密钥分为左右两部分，对这两部分进行 LS 置换，置换后将结果合并并经过 PC2 置换得到此轮的子密钥。子密钥计算过程如下：
 
-![image-20230602194934534](README.assets/image-20230602194934534.png)
+![image-20230602194934534](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602194934534.png)
 
 ### DES 加密步骤
 
@@ -30,13 +30,13 @@ DesEncrypt -p a_decrypt_text -k a_key -v a_initvec -m 5 -c a_cipher_text
 
 总体实现过程如图所示：
 
-![image-20230602193445274](README.assets/image-20230602193445274.png)
+![image-20230602193445274](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602193445274.png)
 
 DES 的 f 函数为 f(R, K)=P(S(K XOR E(R)))，首先将 32 位的 R 经过 E 扩展运算变为 48 位，然后将结果与 48 位的密钥 K 进行异或运算，得到的结果经过 S 盒变换，最后经过 P 置换得到最终的结果。
 
 如下图所示：
 
-![image-20230602194004804](README.assets/image-20230602194004804.png)
+![image-20230602194004804](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602194004804.png)
 
 ## 分组密码的操作模式
 
@@ -50,11 +50,11 @@ DES 的 f 函数为 f(R, K)=P(S(K XOR E(R)))，首先将 32 位的 R 经过 E �
 
 加密流程如下所示
 
-![image-20230602195939378](README.assets/image-20230602195939378.png)
+![image-20230602195939378](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602195939378.png)
 
 解密流程如下所示
 
-![image-20230602200241815](README.assets/image-20230602200241815.png)
+![image-20230602200241815](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602200241815.png)
 
 ### CFB
 
@@ -68,11 +68,11 @@ DES 的 f 函数为 f(R, K)=P(S(K XOR E(R)))，首先将 32 位的 R 经过 E �
 
 加密过程如下
 
-![image-20230602201032323](README.assets/image-20230602201032323.png)
+![image-20230602201032323](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602201032323.png)
 
 这种模式解密不存在无码扩散。
 
-# 二、实践环境
+# 二、环境
 
 ## 软件环境
 
@@ -86,7 +86,7 @@ IDE：visual studio code
 
 CPU： AMD Ryzen 5
 
-# 三、实践过程与步骤
+# 三、实现过程
 
 ## 置换表
 
@@ -1239,7 +1239,7 @@ void dedes_ofb()
 
 -p 指定明文文件，-k 指定密钥文件，-v 指定初始化向量文件，-m 指定分组密码加解密操作模式，-c 指定密文文件
 
-![image-20230602202149581](README.assets/image-20230602202149581.png)
+![image-20230602202149581](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602202149581.png)
 
 ## 数据测试
 
@@ -1256,7 +1256,7 @@ init_vec = 5072656E74696365
 
 ### 电子密码本模式
 
-![image-20230602202752285](README.assets/image-20230602202752285.png)
+![image-20230602202752285](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602202752285.png)
 
 查看密文文件，加密的结果为
 
@@ -1269,7 +1269,7 @@ ciphertext = B80CD471D9D726DD3751DC3855EF4C63
 
 ### 密码分组链接模式
 
-![image-20230602203204982](README.assets/image-20230602203204982.png)
+![image-20230602203204982](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602203204982.png)
 
 查看密文文件，加密的结果为
 
@@ -1282,7 +1282,7 @@ ciphertext = A685D75991CBB4F9CEA8BA51EE758934
 
 ### 密码反馈模式加密
 
-![image-20230602203741591](README.assets/image-20230602203741591.png)
+![image-20230602203741591](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602203741591.png)
 
 查看密文文件，加密的结果为
 
@@ -1295,7 +1295,7 @@ ciphertext = C0A6F5DCA23ECB12C0B8E0D0D2D245C2
 
 ### 输出反馈模式加密
 
-![image-20230602204022375](README.assets/image-20230602204022375.png)
+![image-20230602204022375](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602204022375.png)
 
 查看密文文件，加密的结果为
 
@@ -1312,32 +1312,32 @@ ciphertext = C07A900C9BDD95BF6C603CD5FA270E0C
 
 电子密码本模式加密生成的 10KB 测试数据 20 次，统计结果如下
 
-![image-20230602214012693](README.assets/image-20230602214012693.png)
+![image-20230602214012693](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602214012693.png)
 
 电子密码本模式解密（二十次），统计结果如下
 
-![image-20230602220436011](README.assets/image-20230602220436011.png)
+![image-20230602220436011](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602220436011.png)
 
 密码分组链接模式加密（二十次），统计结果如下
 
-![image-20230602220844221](README.assets/image-20230602220844221.png)
+![image-20230602220844221](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602220844221.png)
 
 密码分组链接模式解密（二十次），统计结果如下
 
-![image-20230602221336714](README.assets/image-20230602221336714.png)
+![image-20230602221336714](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602221336714.png)
 
 密码反馈模式加密（二十次），统计结果如下
 
-![image-20230602223717117](README.assets/image-20230602223717117.png)
+![image-20230602223717117](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602223717117.png)
 
 密码反馈模式解密（由于 OFB 模式输出学号模 10 轮的加密结果次数过多，所以修改测试次数为五次），统计结果如下
 
-![image-20230602224443249](README.assets/image-20230602224443249.png)
+![image-20230602224443249](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602224443249.png)
 
 输出反馈模式加密，统计结果如下
 
-![image-20230602224822689](README.assets/image-20230602224822689.png)
+![image-20230602224822689](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602224822689.png)
 
 输出反馈模式解密，统计结果如下
 
-![image-20230602225145619](README.assets/image-20230602225145619.png)
+![image-20230602225145619](https://raw.githubusercontent.com/cSuk1/DesEncryptLab/main/README.assets/image-20230602225145619.png)
